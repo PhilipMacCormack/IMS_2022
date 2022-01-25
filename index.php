@@ -4,15 +4,15 @@
 
 <h1>Movie Database</h1>
 
-<form action="/Repository/Repository/add_record.php">
-  <label for="mname">Movie name:</label>
-  <input type="text" id="mname" name="mname"><br><br>
-  <label for="myear">Movie year:</label>
-  <input type="int" id="myear" name="myear"><br><br>
-  <label for="mrating">Movie rating(1-5):</label>
-  <input type="int" id="mrating" name="mrating"><br><br>
-  <label for="mgenreid">Choose a genre:</label>
-  <select name="mgenre" id="gid"><br><br>   
+<form action="/IMS_2022/insert.php">
+  <label for="name">Movie name:</label>
+  <input type="text" id="name" name="name"><br><br>
+  <label for="year">Movie year:</label>
+  <input type="int" id="year" name="year"><br><br>
+  <label for="rating">Movie rating (1-5):</label>
+  <input type="int" id="rating" name="rating"><br><br>
+  <label for="genre">Choose a genre:</label>
+  <select name="genre" id="genre"><br><br>   
       <option value="Action/Adventure">Action/Adventure</option>
       <option value="Comedy">Comedy</option>
       <option value="Drama">Drama</option>
@@ -20,9 +20,7 @@
 
   <input type="submit" value="Submit">
 
-<form action="/Repository/Repository/movies_page.php">
-    <input type ="submit" value="View all Movies submitted">
-</form>
+<a href="showmovies.php">View all submitted Movies</a>
 
 
 </body>
