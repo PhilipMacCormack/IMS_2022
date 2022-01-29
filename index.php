@@ -27,22 +27,22 @@
 <html lang="en">
 <body>
 
-  <h1>Movie Database: Submit a movie</h1>
+<br><h1>&emsp;Movie Database: Submit a movie</h1>
   <body>
     <img src='movieicon.png' width='125' length=125>
     <br><br>
 
     <form action="/IMS_2022/insert.php" method="POST">
-      <label>Movie name:</label>
+      <label>&emsp;Movie name:</label>
       <input type="text" name = "Movie_name" required><br><br>
 
-      <label>Year of Release:</label>
+      <label>&emsp;Year of Release:</label>
       <input type="int" name="Year_of_release" required><br><br>
 
-      <label>Movie rating (1-5):</label>
+      <label>&emsp;Movie rating (1-5):</label>
       <input type="int" name="Rating"><br><br>
 
-      <label>Select a genre:</label>
+      <label>&emsp;Select a genre:</label>
       <select name="Genre">
         <?php
           while ($genre_id = mysqli_fetch_array(
@@ -57,19 +57,13 @@
           endwhile;
       ?>
     </select>
-    <br>
+    <br><br>
 
-  <!-- <label for="genreid">Choose a genre:</label>
-  <select ID="_genreid" name="genreid"><br><br>   
-      <option value="Action/Adventure">Action/Adventure</option>
-      <option value="Comedy">Comedy</option>
-      <option value="Drama">Drama</option>
-      <option value="Fantasy/Sci-Fi">Fantasy/Sci-Fi</option> -->
+  &emsp;&emsp;<input type="submit" value="Submit">
 
-  <input type="submit" value="Submit">
-
-
-<a href="showmovies.php">View all submitted Movies</a>
+&emsp;<input type="button" onclick= "location.href = '/IMS_2022/showmovies.php';" value="View all submitted movies">
+            </form>
+            </td><br><br>
 
 
 </body>

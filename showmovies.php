@@ -11,7 +11,8 @@
 
 </head>
 <body>
-  <h1>Movie Database: Library</h1>
+<br><h1>&emsp;Movie Database: Library</h1>
+
 <form action="/IMS_2022/searchbox.php" method="GET">
   <div class="input-group mb-3">
     <input type="text" id="moviesearch" name = "search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="form-control" placeholder="Search movies">
@@ -30,12 +31,14 @@
                                     <th>Rating</th>
                                     <th>Genre id</th>
                                     <th>Genre</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
 
 <?php
 include 'db.php';
+require_once 'functions.php';
 
 $sql = "SELECT movies.mid, movies.mname, movies.myear, movies.mrating, movies.mgenreid, genres.mgenre, genres.gid
 FROM movies
@@ -44,29 +47,38 @@ ON movies.mgenreid=gid";
 
 $result = $conn->query($sql);
 
-// want to select the genre where the gid=mgenreid
-if ($result > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-      echo 
-      "<tr>
-      <td>".$row["mid"]."</td>
-      <td>".$row["mname"]."</td>
-      <td>".$row["myear"]."</td>
-      <td>".$row["mrating"]."</td>
-      <td>".$row["mgenreid"]."</td>
-      <td>".$row["mgenre"]."</td>
-      </tr>";
-    }
-    echo "</table>";
-  }
-else {
+//If the query gives any results, print the table with the results
+if ($result > 0)
+{
+     foreach ($result as $row)
+     {?>
+      <tr>
+        <td><?php echo $row["mid"]; ?></td>
+        <td><?php echo $row["mname"]; ?></td>
+        <td><?php echo $row["myear"]; ?></td>
+        <td><?php echo $row["mrating"]; ?></td>
+        <td><?php echo $row["mgenreid"]; ?></td>
+        <td><?php echo $row["mgenre"]; ?></td>
+        <td>
+          <form action='delete_record.php?id="<?php echo $row["mid"]; ?>"' method="post">
+            <input type="hidden" name="id" value="<?php echo $row["mid"]; ?>">
+            <input type="submit" name="submit" value="Delete">
+            </form>
+            </td>
+      <tr>
+        <?php
+     }
+}
+else
+{
     echo "0 results found.";
-  }
+}
 
 $conn->close();
 
 ?>
-<a href="index.php">Submit a new Movie</a>
-
+<form action=/IMS_2022/index.php method=post>
+            <input type="submit" name="submit" value="Submit a new movie">
+            </form>
+            </td><br><br>
 

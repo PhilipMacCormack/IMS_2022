@@ -4,7 +4,7 @@
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<h1>Search Results </h1>
+<br><h1>&emsp;Movie Database: Search Results </h1>
 <div class="col-md-12">
                 <div class="card mt-4">
                     <div class="card-body">

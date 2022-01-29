@@ -10,7 +10,7 @@ $_genreid = $_REQUEST['Genre'];
 $sql = "INSERT INTO movies SET mname='$_name', myear='$_year', mrating='$_rating', mgenreid='$_genreid'";
 
 if ($conn->query($sql) === TRUE) {
-    echo "<h1>New record stored successfully in database: movies<h1>";
+    echo "<br><br><h1>&emsp;New record stored successfully in database: movies<h1>";
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
@@ -32,4 +32,4 @@ $conn->close();
 
 <meta http-equiv="refresh" content="3; URL=/IMS_2022/index.php" />
 <br>
-<p>You will now be redirected to the submit page... <p>
+&emsp;You will now be redirected to the submit page...
