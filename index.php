@@ -12,14 +12,15 @@
 <?php
 
   include 'db.php';
-  $con = mysqli_connect("localhost","root","root","movies_db");
 
+  //Query to get genres
   $sql = "SELECT * FROM genres";
-  $all_genres = mysqli_query($con,$sql);
+  $all_genres = mysqli_query($conn,$sql);
 
+  //Make variables if genre is set
   if (isset($_POST['submit'])){
-    $gid = mysqli_real_escape_string($con,$_POST['gid']);
-    $genre = mysqli_real_escape_string($con,$_POST['mgenre']);
+    $gid = mysqli_real_escape_string($conn,$_POST['gid']);
+    $genre = mysqli_real_escape_string($conn,$_POST['mgenre']);
   }
 ?>
 
@@ -27,6 +28,7 @@
 <html lang="en">
 <body>
 
+<!-- Frontend design of index -->
 <br><h1>&emsp;Movie Database: Submit a movie</h1>
   <body>
     <img src='movieicon.png' width='125' length=125>
@@ -45,6 +47,7 @@
       <label>&emsp;Select a genre:</label>
       <select name="Genre">
         <?php
+          //Set values for dropdown list
           while ($genre_id = mysqli_fetch_array(
             $all_genres,MYSQLI_ASSOC)):; 
         ?>
@@ -59,8 +62,10 @@
     </select>
     <br><br>
 
+  <!-- Create submit button -->
   &emsp;&emsp;<input type="submit" value="Submit">
 
+  <!-- Create button for redirecting to showmovies -->
 &emsp;<input type="button" onclick= "location.href = '/IMS_2022/showmovies.php';" value="View all submitted movies">
             </form>
             </td><br><br>

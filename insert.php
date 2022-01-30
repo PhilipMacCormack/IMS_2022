@@ -2,11 +2,13 @@
 
 include 'db.php';
 
+//Get input from form and create variables for them
 $_name = $_REQUEST['Movie_name'];
 $_year = $_REQUEST['Year_of_release'];
 $_rating = $_REQUEST['Rating'];
 $_genreid = $_REQUEST['Genre'];
 
+//Query to insert input data in database, prints error if query does not work
 $sql = "INSERT INTO movies SET mname='$_name', myear='$_year', mrating='$_rating', mgenreid='$_genreid'";
 
 if ($conn->query($sql) === TRUE) {
@@ -19,6 +21,7 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 ?>
 
+<!-- Frontend, Style, metatags, and code to redirect from /IMS_2022/insert.php to /IMS/index.php after 3 seconds -->
 <!DOCTYPE html>
 <html>
 <head>

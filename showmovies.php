@@ -13,12 +13,14 @@
 <body>
 <br><h1>&emsp;Movie Database: Library</h1>
 
+<!-- Create searchbox for searching in the table -->
 <form action="/IMS_2022/searchbox.php" method="GET">
   <div class="input-group mb-3">
     <input type="text" id="moviesearch" name = "search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="form-control" placeholder="Search movies">
     <button type="submit" class="btn btn-primary"> Search</button>
 <br><br>
 
+<!-- Create first row in table for defining each column -->
 <div class="col-md-12">
                 <div class="card mt-4">
                     <div class="card-body">
@@ -40,6 +42,7 @@
 include 'db.php';
 require_once 'functions.php';
 
+//Query for selecting attributes needed in table
 $sql = "SELECT movies.mid, movies.mname, movies.myear, movies.mrating, movies.mgenreid, genres.mgenre, genres.gid
 FROM movies
 LEFT JOIN genres 
@@ -60,6 +63,7 @@ if ($result > 0)
         <td><?php echo $row["mgenreid"]; ?></td>
         <td><?php echo $row["mgenre"]; ?></td>
         <td>
+          <!-- Adding functionality for delete button -->
           <form action='delete_record.php?id="<?php echo $row["mid"]; ?>"' method="post">
             <input type="hidden" name="id" value="<?php echo $row["mid"]; ?>">
             <input type="submit" name="submit" value="Delete">
@@ -77,6 +81,8 @@ else
 $conn->close();
 
 ?>
+
+<!-- Create button for redirecting to submit page -->
 <form action=/IMS_2022/index.php method=post>
             <input type="submit" name="submit" value="Submit a new movie">
             </form>
